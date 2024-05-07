@@ -20,12 +20,18 @@ export interface OptionSelectedEventDetail<T = any> {
   selectedOption: string;
 }
 
+export interface DateSelectedEventDetail {
+  selectedDate: Date;
+}
+
 export interface MultiSelectOptionEventDetail {
   selected: boolean;
   selectedOption: string;
 }
 
 export interface InputClear<T = any> {}
+
+export interface EscapePressed<T = any> {}
 
 export interface HTMLB2bFormElement {
   error?: string;
@@ -40,4 +46,7 @@ export interface ToggleButtonEventDetail<T = any> {
 }
 export interface ChipComponentEventDetail<T = any> {
   value: T;
+}
+export interface CalendarEventDetail<T = any> {
+  selectedDate: Date;
 }
