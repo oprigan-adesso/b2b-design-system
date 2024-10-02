@@ -1449,6 +1449,7 @@ declare global {
     interface HTMLB2bCalendarHeaderElementEventMap {
         "b2b-calendar-previous-month": PreviousMonth;
         "b2b-calendar-next-month": NextMonth;
+        "b2b-calendar-view-changed": CalendarViewChangedEventDetail;
     }
     interface HTMLB2bCalendarHeaderElement extends Components.B2bCalendarHeader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLB2bCalendarHeaderElementEventMap>(type: K, listener: (this: HTMLB2bCalendarHeaderElement, ev: B2bCalendarHeaderCustomEvent<HTMLB2bCalendarHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2346,6 +2347,10 @@ declare namespace LocalJSX {
           * Event emitted for previous month click*
          */
         "onB2b-calendar-previous-month"?: (event: B2bCalendarHeaderCustomEvent<PreviousMonth>) => void;
+        /**
+          * Event emitted for changing the calendar view *
+         */
+        "onB2b-calendar-view-changed"?: (event: B2bCalendarHeaderCustomEvent<CalendarViewChangedEventDetail>) => void;
         /**
           * Internal selected month
          */
