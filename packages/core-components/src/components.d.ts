@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreadCrumbChangeEventDetail, ColumnSortChangeEventDetail, EscapePressed, NextMonth, PageChangeEventDetail, PreviousMonth, TabChangeEventDetail, ToggleChipEventDetail, ToggleSwitchEventDetail } from "./utils/interfaces/interaction.interface";
+import { BreadCrumbChangeEventDetail, CalendarViewChangedEventDetail, ColumnSortChangeEventDetail, EscapePressed, MonthSelectedEventDetail, NextMonth, PageChangeEventDetail, PreviousMonth, TabChangeEventDetail, ToggleChipEventDetail, ToggleSwitchEventDetail, YearSelectedEventDetail } from "./utils/interfaces/interaction.interface";
 import { CalendarEventDetail, CheckboxEventDetail, ChipComponentEventDetail, DateSelectedEventDetail, InputChangeEvent, InputClear, MultiSelectOptionEventDetail, OptionSelectedEventDetail, RadioEventDetail, SearchClickEventDetail, ToggleButtonEventDetail } from "./utils/interfaces/form.interface";
 import { IconName } from "./components/icon/types";
 import { IconName as IconName1 } from "./components/icon-100/types";
@@ -15,7 +15,7 @@ import { ContentAlignment, TableAccordionRowTypes, TableColourOptions, TableRowg
 import { CheckboxEventDetail as CheckboxEventDetail1 } from "./components";
 import { TableAccordionSelectedEventDetail } from "./utils/interfaces/content.interface";
 import { WizardStatus, WizardSteps } from "./utils/types/wizard.types";
-export { BreadCrumbChangeEventDetail, ColumnSortChangeEventDetail, EscapePressed, NextMonth, PageChangeEventDetail, PreviousMonth, TabChangeEventDetail, ToggleChipEventDetail, ToggleSwitchEventDetail } from "./utils/interfaces/interaction.interface";
+export { BreadCrumbChangeEventDetail, CalendarViewChangedEventDetail, ColumnSortChangeEventDetail, EscapePressed, MonthSelectedEventDetail, NextMonth, PageChangeEventDetail, PreviousMonth, TabChangeEventDetail, ToggleChipEventDetail, ToggleSwitchEventDetail, YearSelectedEventDetail } from "./utils/interfaces/interaction.interface";
 export { CalendarEventDetail, CheckboxEventDetail, ChipComponentEventDetail, DateSelectedEventDetail, InputChangeEvent, InputClear, MultiSelectOptionEventDetail, OptionSelectedEventDetail, RadioEventDetail, SearchClickEventDetail, ToggleButtonEventDetail } from "./utils/interfaces/form.interface";
 export { IconName } from "./components/icon/types";
 export { IconName as IconName1 } from "./components/icon-100/types";
@@ -3603,6 +3603,8 @@ declare module "@stencil/core" {
             "b2b-calendar-days": LocalJSX.B2bCalendarDays & JSXBase.HTMLAttributes<HTMLB2bCalendarDaysElement>;
             "b2b-calendar-days-header": LocalJSX.B2bCalendarDaysHeader & JSXBase.HTMLAttributes<HTMLB2bCalendarDaysHeaderElement>;
             "b2b-calendar-header": LocalJSX.B2bCalendarHeader & JSXBase.HTMLAttributes<HTMLB2bCalendarHeaderElement>;
+            "b2b-calendar-months": LocalJSX.B2bCalendarMonths & JSXBase.HTMLAttributes<HTMLB2bCalendarMonthsElement>;
+            "b2b-calendar-years": LocalJSX.B2bCalendarYears & JSXBase.HTMLAttributes<HTMLB2bCalendarYearsElement>;
             "b2b-card": LocalJSX.B2bCard & JSXBase.HTMLAttributes<HTMLB2bCardElement>;
             "b2b-checkbox": LocalJSX.B2bCheckbox & JSXBase.HTMLAttributes<HTMLB2bCheckboxElement>;
             "b2b-checkbox-group": LocalJSX.B2bCheckboxGroup & JSXBase.HTMLAttributes<HTMLB2bCheckboxGroupElement>;
