@@ -9,8 +9,6 @@
       var(--b2b-size-60);
     column-gap: var(--b2b-size-25);
     row-gap: var(--b2b-size-25);
-
-    //scrollable content
     height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -18,7 +16,6 @@
 
   .b2b-calendar-year {
     height: var(--b2b-size-80);
-    //width: 82px;
     border-radius: 5px;
     text-align: center;
     display: flex;

@@ -25,10 +25,15 @@ import {
 export class B2bCalendar {
   @Element() host: HTMLB2bCalendarElement;
 
+  /** Disable the past dates from the current date */
   @Prop() disablePastDates: boolean;
+  /** Disable the future dates from the current date */
   @Prop() disableFutureDates: boolean;
+  /** Disable all the weekends */
   @Prop() disableWeekends: boolean;
+  /** The date picker label */
   @Prop() label: string = 'Zeitraum auswählen';
+  /** The event that will be emitted when a date is selected */
   @Event({ eventName: 'b2b-selected' })
   b2bSelected: EventEmitter<CalendarEventDetail>;
 
