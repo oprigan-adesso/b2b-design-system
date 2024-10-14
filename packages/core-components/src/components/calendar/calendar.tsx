@@ -25,29 +25,34 @@ import {
 export class B2bCalendar {
   @Element() host: HTMLB2bCalendarElement;
 
-  /** Whether the previous dates from the current date are disabled. By default, this is true. */
   @Prop() disablePastDates: boolean;
-
-  /** Whether the dates after the current date are disabled. By default, this is false. */
   @Prop() disableFutureDates: boolean;
-
-  /** Whether the dates that fall on the weekend are disabled. By default, this is false. */
   @Prop() disableWeekends: boolean;
-
-  /** Label for the calendar component. */
   @Prop() label: string = 'Zeitraum auswählen';
-
-  /** Emits the selected date as Date type. */
   @Event({ eventName: 'b2b-selected' })
   b2bSelected: EventEmitter<CalendarEventDetail>;
 
   @State() private showCalendar: boolean = false;
   @State() private calendarView: CalendarView = CalendarView.Days;
-
   @State() selectedMonth: number = new Date().getMonth();
   @State() selectedYear: number = new Date().getFullYear();
   @State() selectedDay: number;
   @State() selectedDate: string = undefined;
+
+  componentDidLoad() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  private handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!this.host.contains(target)) {
+      this.showCalendar = false;
+    }
+  };
 
   @Listen('b2b-calendar-escape')
   handleEscapePress() {
@@ -60,6 +65,7 @@ export class B2bCalendar {
     this.setSelectedDate();
     this.showCalendar = false;
   }
+
   @Listen('b2b-calendar-previous-month')
   getPreviousMonth() {
     if (this.selectedMonth === 0) {
@@ -110,6 +116,7 @@ export class B2bCalendar {
     this.clearDateInput();
     this.selectedDay = undefined;
   };
+
   private showHideCalendar = () => {
     this.showCalendar = !this.showCalendar;
   };
@@ -120,27 +127,25 @@ export class B2bCalendar {
   };
 
   private setSelectedDate() {
-    if (this.selectedDay !== undefined)
-      this.selectedDate =
-        this.selectedDay +
-        '.' +
-        (this.selectedMonth + 1) +
-        '.' +
-        this.selectedYear;
-    this.b2bSelected.emit({
-      selectedDate: new Date(
-        this.selectedYear,
-        this.selectedMonth,
-        this.selectedDay,
-      ),
-    });
-    setTimeout(() => {
-      this.setFocusOnCloseIcon();
-    }, 100);
+    if (this.selectedDay !== undefined) {
+      this.selectedDate = `${this.selectedDay}.${this.selectedMonth + 1}.${
+        this.selectedYear
+      }`;
+      this.b2bSelected.emit({
+        selectedDate: new Date(
+          this.selectedYear,
+          this.selectedMonth,
+          this.selectedDay,
+        ),
+      });
+      setTimeout(() => {
+        this.setFocusOnCloseIcon();
+      }, 100);
+    }
   }
 
   private setFocusOnCloseIcon() {
-    let closeIcon = this.host.shadowRoot.querySelector(
+    const closeIcon = this.host.shadowRoot.querySelector(
       '.b2b-close-icon',
     ) as HTMLDivElement;
     if (closeIcon !== null) {

@@ -1,6 +1,8 @@
 @use '../../global/b2b-styles';
 
 :host {
+  width: 600px;
+
   .b2b-calendar {
     position: relative;
   }
