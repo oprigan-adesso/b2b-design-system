@@ -185,6 +185,18 @@ export namespace Components {
          */
         "selectedYear": number;
     }
+    interface B2bCalendarMonths {
+        /**
+          * Internal selected month
+         */
+        "selectedMonth": number;
+    }
+    interface B2bCalendarYears {
+        /**
+          * Internal selected year
+         */
+        "selectedYear": number;
+    }
     interface B2bCard {
         /**
           * Disables the card. Per default, it is false
@@ -1233,6 +1245,14 @@ export interface B2bCalendarHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLB2bCalendarHeaderElement;
 }
+export interface B2bCalendarMonthsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLB2bCalendarMonthsElement;
+}
+export interface B2bCalendarYearsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLB2bCalendarYearsElement;
+}
 export interface B2bCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLB2bCardElement;
@@ -1464,6 +1484,40 @@ declare global {
     var HTMLB2bCalendarHeaderElement: {
         prototype: HTMLB2bCalendarHeaderElement;
         new (): HTMLB2bCalendarHeaderElement;
+    };
+    interface HTMLB2bCalendarMonthsElementEventMap {
+        "b2b-calendar-month-selected": MonthSelectedEventDetail;
+    }
+    interface HTMLB2bCalendarMonthsElement extends Components.B2bCalendarMonths, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLB2bCalendarMonthsElementEventMap>(type: K, listener: (this: HTMLB2bCalendarMonthsElement, ev: B2bCalendarMonthsCustomEvent<HTMLB2bCalendarMonthsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLB2bCalendarMonthsElementEventMap>(type: K, listener: (this: HTMLB2bCalendarMonthsElement, ev: B2bCalendarMonthsCustomEvent<HTMLB2bCalendarMonthsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLB2bCalendarMonthsElement: {
+        prototype: HTMLB2bCalendarMonthsElement;
+        new (): HTMLB2bCalendarMonthsElement;
+    };
+    interface HTMLB2bCalendarYearsElementEventMap {
+        "b2b-calendar-year-selected": YearSelectedEventDetail;
+    }
+    interface HTMLB2bCalendarYearsElement extends Components.B2bCalendarYears, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLB2bCalendarYearsElementEventMap>(type: K, listener: (this: HTMLB2bCalendarYearsElement, ev: B2bCalendarYearsCustomEvent<HTMLB2bCalendarYearsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLB2bCalendarYearsElementEventMap>(type: K, listener: (this: HTMLB2bCalendarYearsElement, ev: B2bCalendarYearsCustomEvent<HTMLB2bCalendarYearsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLB2bCalendarYearsElement: {
+        prototype: HTMLB2bCalendarYearsElement;
+        new (): HTMLB2bCalendarYearsElement;
     };
     interface HTMLB2bCardElementEventMap {
         "b2b-selected": void;
@@ -2118,6 +2172,8 @@ declare global {
         "b2b-calendar-days": HTMLB2bCalendarDaysElement;
         "b2b-calendar-days-header": HTMLB2bCalendarDaysHeaderElement;
         "b2b-calendar-header": HTMLB2bCalendarHeaderElement;
+        "b2b-calendar-months": HTMLB2bCalendarMonthsElement;
+        "b2b-calendar-years": HTMLB2bCalendarYearsElement;
         "b2b-card": HTMLB2bCardElement;
         "b2b-checkbox": HTMLB2bCheckboxElement;
         "b2b-checkbox-group": HTMLB2bCheckboxGroupElement;
@@ -2355,6 +2411,26 @@ declare namespace LocalJSX {
           * Internal selected month
          */
         "selectedMonth"?: number;
+        /**
+          * Internal selected year
+         */
+        "selectedYear"?: number;
+    }
+    interface B2bCalendarMonths {
+        /**
+          * Event emitted on selecting month*
+         */
+        "onB2b-calendar-month-selected"?: (event: B2bCalendarMonthsCustomEvent<MonthSelectedEventDetail>) => void;
+        /**
+          * Internal selected month
+         */
+        "selectedMonth"?: number;
+    }
+    interface B2bCalendarYears {
+        /**
+          * Event emitted on selecting year*
+         */
+        "onB2b-calendar-year-selected"?: (event: B2bCalendarYearsCustomEvent<YearSelectedEventDetail>) => void;
         /**
           * Internal selected year
          */
@@ -3537,6 +3613,8 @@ declare namespace LocalJSX {
         "b2b-calendar-days": B2bCalendarDays;
         "b2b-calendar-days-header": B2bCalendarDaysHeader;
         "b2b-calendar-header": B2bCalendarHeader;
+        "b2b-calendar-months": B2bCalendarMonths;
+        "b2b-calendar-years": B2bCalendarYears;
         "b2b-card": B2bCard;
         "b2b-checkbox": B2bCheckbox;
         "b2b-checkbox-group": B2bCheckboxGroup;
