@@ -9,6 +9,9 @@ export class B2bMultiSelectOption {
   /** The label of the option. */
   @Prop() option!: string;
 
+  /** The label of the option. */
+  @Prop() label!: string;
+  
   /** Emits the option as a string whenever an option is selected. */
   @Event({ eventName: 'b2b-option-selected' })
   b2bOptionSelected: EventEmitter<MultiSelectOptionEventDetail>;
